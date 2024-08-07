@@ -7,8 +7,7 @@ def get_task_by_id():
     try:
         with sqlite3.connect('transport.db') as conn:
             cur = conn.cursor()
-            cur.execute('SELECT "Kd mean" FROM Data WHERE Radionuclide_id = "Cs-137"')
-            #cur.execute('SELECT * FROM Water CROSS JOIN Sample')
+            cur.execute('SELECT "Kd mean" FROM Data WHERE Site = "Čihadlo" OR Site= "Hrádek" AND Radionuclide_id="Cs-137";')
             row = cur.fetchall()
             return row
     except sqlite3.Error as e:
@@ -36,5 +35,5 @@ plt.show()
 hist, bin_edges = np.histogram(dfnp, density=True)
 
 plt.plot(hist)
-plt.hist(dfnp, bins=50)
+plt.hist(dfnp, bins=5)
 plt.show()
