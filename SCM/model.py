@@ -44,7 +44,7 @@ problem = {
                [0.1, 10]]
 }
 
-parameter_values = saltelli.sample(problem, 100)
+parameter_values = saltelli.sample(problem, 1024)
 
 out_array = np.zeros([parameter_values.shape[0], 1])
 for i, param in enumerate(parameter_values):

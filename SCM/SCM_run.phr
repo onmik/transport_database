@@ -13,7 +13,7 @@ Surf_OH = Surf_O- + H+
 
 
 Surf_OH + UO2+2 = Surf_OUO2+ + H+
-	log_k  2.33203125                        # log_k = 2.6 		
+	log_k  2.66796875                        # log_k = 2.6 		
 
 END
 
@@ -49,7 +49,7 @@ SOLUTION 1 SGW2
   Si	31.2	as SiO2
   Al 	0.1	# First estimate
   Fe	0.1	# First estimate
-  U(+6)	4.779296875
+  U(+6)	4.547265625
 END
 
 
@@ -63,7 +63,7 @@ END
 USE SURFACE 1
 USE SOLUTION 1
 EQUILIBRIUM_PHASES 1
-	Fix_H+ -8.4140625 NaOH 11.0 			
+	Fix_H+ -8.7109375 NaOH 11.0 			
 END
 
 
