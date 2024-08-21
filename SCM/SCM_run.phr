@@ -1,0 +1,69 @@
+
+
+SURFACE_MASTER_SPECIES 
+Surf_ Surf_OH
+
+SURFACE_SPECIES
+Surf_OH = Surf_OH   		# montmorillonite protonation reactions 
+	log_k	0.0
+Surf_OH + H+ = Surf_OH2+
+	log_k	7.29
+Surf_OH = Surf_O- + H+
+	log_k	-8.93
+
+
+Surf_OH + UO2+2 = Surf_OUO2+ + H+
+	log_k  2.33203125                        # log_k = 2.6 		
+
+END
+
+SURFACE 1
+	-sites DENSITY
+	Surf_OH		2.31	0.35	12.5	# name of site, site density, specific area/gram, grams
+END
+
+SELECTED_OUTPUT
+-file			output_2.xls
+-reset		true
+-totals		 
+-molalities	UO2+2  UO2+ Surf_OUO2+     
+END
+
+
+SOLUTION 1 SGW2
+  -temperature	25.0  # [ C]
+  -pressure	1.0   # [atm]
+  -density	1.0   # [kg/L], default
+  -water	1.0   # [kg], default
+  -pH		8.2   # Real value (SGW2) 
+  -pe 		-1.69 # Eh = -100 mV 
+  -redox	pe    # default
+  -units	mg/L
+  Na	16.5	#charge
+  K		2.1
+  Ca	34.6
+  Mg	8.3
+  Cl	3.3
+  S		21.0	as SO4	charge
+  C		168.7	CO2(g) -3.00
+  Si	31.2	as SiO2
+  Al 	0.1	# First estimate
+  Fe	0.1	# First estimate
+  U(+6)	4.779296875
+END
+
+
+PHASES 
+     Fix_H+ 
+     H+ = H+ 
+     log_k  0.0 		#pseudo-
+END 
+
+
+USE SURFACE 1
+USE SOLUTION 1
+EQUILIBRIUM_PHASES 1
+	Fix_H+ -8.4140625 NaOH 11.0 			
+END
+
+

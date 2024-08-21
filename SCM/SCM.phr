@@ -13,7 +13,7 @@ Surf_OH = Surf_O- + H+
 
 
 Surf_OH + UO2+2 = Surf_OUO2+ + H+
-	log_k  2.6
+	log_k  LOG_K_VAR                        # log_k = 2.6 		
 
 END
 
@@ -40,16 +40,16 @@ SOLUTION 1 SGW2
   -redox	pe    # default
   -units	mg/L
   Na	16.5	#charge
-  K	2.1
+  K		2.1
   Ca	34.6
   Mg	8.3
   Cl	3.3
-  S	21.0	as SO4	charge
-  C	168.7	CO2(g) -3.00
+  S		21.0	as SO4	charge
+  C		168.7	CO2(g) -3.00
   Si	31.2	as SiO2
   Al 	0.1	# First estimate
   Fe	0.1	# First estimate
-  U(+6)	1
+  U(+6)	U_VAR
 END
 
 
@@ -63,25 +63,7 @@ END
 USE SURFACE 1
 USE SOLUTION 1
 EQUILIBRIUM_PHASES 1
-	Fix_H+ -8.2 NaOH 11.0 			
+	Fix_H+ PH_VAR NaOH 11.0 			
 END
 
 
-USE SURFACE 1
-USE SOLUTION 1
-EQUILIBRIUM_PHASES 1
-	Fix_H+ -7.2 NaOH 11.0 			
-END
-
-
-USE SURFACE 1
-USE SOLUTION 1
-EQUILIBRIUM_PHASES 1
-	Fix_H+ -9.2 NaOH 11.0 			
-END
-
-USE SURFACE 1
-USE SOLUTION 1
-EQUILIBRIUM_PHASES 1
-	Fix_H+ -5.2 NaOH 11.0 			
-END
