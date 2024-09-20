@@ -1,0 +1,94 @@
+# ---------------------------------------------------------
+DATABASE C:\phreeqc\database\2017-04-20 LLNL.DAT
+# ---------------------------------------------------------
+
+# ---------------------------------------------------------
+TITLE Equilibration with host rock
+  # Project:	 ZL Geochemie
+  # User:	 Martin Klajmon (ÚJV Øež, a. s.)
+  # Version:	 1.1
+  # Date:	 2017-10-04
+  # Database:	 LLNL.DAT ('thermo.com.V8.R6.230')
+  # Description: This code calculate saturation indices 
+  #		 (SI) of the host rock minerals and fracture 
+  #              filling minerals in SGW2 and SGW3.
+# ---------------------------------------------------------
+
+# ---------------------------------------------------------
+SOLUTION_SPECIES
+  # Suppression of sulphate/sulphide reduction:
+  1.000H+ + 1.000SO4-2  = HS- + 2.000O2
+     log_k  -1.0E+10    
+     delta_h  0	
+  # Suppression of carbonate/methane reduction:	
+  1.000HCO3- + 1.000H+ + 1.000H2O  = CH4 + 2.000O2
+     log_k  -1.0E+10    
+     delta_h  0
+# ---------------------------------------------------------
+
+# ---------------------------------------------------------
+SELECTED_OUTPUT 1 Writing an output file.
+  -file OUTPUT.xls
+  -reset false
+  -simulation true
+  # -high_precision true
+  -solution
+  -temperature 
+  -totals	Na K Ca Mg Fe Al Cl S(6) N(5) C(4) Si
+  -pH
+  -pe
+  -ionic_strength 
+  -saturation_indices	CO2(g) O2(g)
+  -saturation_indices	Albite Anorthite Maximum_Microcline Quartz Muscovite Tremolite Calcite Pyrite Fluorapatite Hydroxylapatite Chamosite-7A Epidote
+  -eq	Albite Anorthite Maximum_Microcline Quartz Muscovite Tremolite Calcite Pyrite Fluorapatite Hydroxylapatite Chamosite-7A Epidote
+# ---------------------------------------------------------
+
+# --------------------------------------------------------- 
+SOLUTION 1 SGW2
+  -temperature	25.0  # [°C]
+  -pressure	1.0   # [atm]
+  -density	1.0   # [kg/L], default
+  -water	1.0   # [kg], default
+  -pH		8.2   # Real value (SGW2) 
+  -pe 		-1.69 # Eh = -100 mV 
+  -redox	pe    # default
+  -units	mg/L
+  Na	16.5	#charge
+  K	2.1
+  Ca	34.6
+  Mg	8.3
+  Cl	3.3
+  S	21.0	as SO4	charge
+  C	168.7	CO2(g) -3.00
+  Si	31.2	as SiO2
+  Al 	0.1	# First estimate
+  Fe	0.1	# First estimate
+# ---------------------------------------------------------
+END
+
+# --------------------------------------------------------- 
+SOLUTION 2 SGW3
+  -temperature	25.0  # [°C]
+  -pressure	1.0   # [atm]
+  -density	1.0   # [kg/L], default
+  -water	1.0   # [kg], default
+  -pH		9.4   # Real value (SGW3)
+  -pe 		-1.69 # Eh = -100 mV  
+  -redox	pe    # default
+  -units	mg/L
+  Na	89.4	charge
+  K	0.7
+  Ca	1.3
+  Mg	0.1
+  Cl	18.7
+  S	10.5	as SO4
+  C	163.5	CO2(g) -3.50
+  Si	25.1	as SiO2
+  Al 	0.1	# First estimate
+  Fe	0.1	# First estimate
+# ---------------------------------------------------------
+END
+
+# ----------------------------
+# ----- End of the code. -----
+# ----------------------------
